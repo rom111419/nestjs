@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="MariaDb" id="Project-16f2" database="MariaDb" >
+	<schema name="ritmby" >
+		<table name="form" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="name" prior="text_id" type="int" jt="4" >
+				<comment><![CDATA[text_id]]></comment>
+			</column>
+			<index name="pk_form_id" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="form_field" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="form_id" type="int" jt="4" >
+				<comment><![CDATA[form_id]]></comment>
+			</column>
+			<column name="name" type="int" length="100" jt="4" >
+				<comment><![CDATA[text_id]]></comment>
+			</column>
+			<index name="pk_form_field_id" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="fk_form_field_form" to_schema="ritmby" to_table="form" >
+				<fk_column name="form_id" pk="id" />
+			</fk>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="forms" >
+			<column name="id" type="int" jt="4" mandatory="y" />
+			<column name="name" type="text" length="100" jt="-1" />
+			<index name="pk_forms_id" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="language" prior="language\" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="name" prior="text_id" type="int" jt="4" >
+				<comment><![CDATA[text_id]]></comment>
+			</column>
+			<index name="pk_languages_id" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="fk_meanings_languages_texts" unique="NORMAL" >
+				<column name="name" />
+			</index>
+			<fk name="fk_language_text" to_schema="ritmby" to_table="text" >
+				<fk_column name="name" pk="id" />
+			</fk>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="tag" prior="tags" generator_rows="100" >
+			<comment><![CDATA[tags]]></comment>
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="value" prior="text_id" type="int" jt="4" >
+				<comment><![CDATA[text_id]]></comment>
+			</column>
+			<column name="language_id" prior="languages_id" type="int" jt="4" />
+			<index name="pk_tags_id" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="fk_tags_texts" unique="NORMAL" >
+				<column name="value" />
+			</index>
+			<index name="fk_tags_texts_0" unique="NORMAL" >
+				<column name="language_id" />
+			</index>
+			<fk name="fk_tag_language" to_schema="ritmby" to_table="language" >
+				<fk_column name="language_id" pk="id" />
+			</fk>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="text" prior="texts" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="value" prior="values" type="text" jt="-1" >
+				<defo><![CDATA['']]></defo>
+			</column>
+			<column name="text_id" type="int" jt="4" />
+			<index name="pk_tbl_id" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+	</schema>
+	<connector name="MariaDb" database="MariaDb" driver_class="org.mariadb.jdbc.Driver" driver_jar="mariadb-java-client-2.7.2.jar" driver_desc="Standard" host="localhost" port="5041" user="root" passwd="VVNFUk5BTUVfUEFTU1dPUkQ=" />
+	<layout name="ritmby_main" id="Layout-3f1" show_relation="columns" >
+		<entity schema="ritmby" name="form" color="C1D8EE" x="448" y="48" />
+		<entity schema="ritmby" name="form_field" color="C1D8EE" x="624" y="48" />
+		<entity schema="ritmby" name="tag" color="3986C1" x="208" y="48" />
+		<entity schema="ritmby" name="text" color="C1D8EE" x="48" y="48" />
+		<browser id="Browse-7d2" name="meanings_languages" confirm_updates="y" confirmed="y" >
+			<browse_table schema="ritmby" entity="language" x="20" y="20" width="400" height="300" />
+		</browser>
+		<browser id="Browse-2137" name="tags" confirm_updates="y" confirmed="y" >
+			<browse_table schema="ritmby" entity="tag" x="20" y="20" width="400" height="300" record_view="y" />
+		</browser>
+		<browser id="Browse-113d" name="tags_001" confirm_updates="y" >
+			<browse_table schema="ritmby" entity="tag" x="20" y="20" width="400" height="300" />
+		</browser>
+		<browser id="Browse-2491" name="texts" confirm_updates="y" confirmed="y" >
+			<browse_table schema="ritmby" entity="text" x="29" y="2" width="400" height="300" />
+		</browser>
+	</layout>
+</project>

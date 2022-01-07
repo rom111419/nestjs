@@ -1,0 +1,4 @@
+FROM mariadb:latest
+RUN echo env
+WORKDIR /
+MAINTAINER ROMAN ZHUKOV

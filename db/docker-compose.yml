@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  mysql:
+    image: ${PR_ART}--${SERVICE}:latest
+    container_name: ${COMPOSE_PROJECT_NAME}--${SERVICE}
+    build:
+      context: ./
+      dockerfile: dockerfile--${SERVICE}.dockerfile
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - 5041:3306
+    volumes:
+      - type: volume
+        source: vol_1
+        target: /var/lib/mariadb
+    environment:
+      MYSQL_USER: ${USERNAME}
+      MYSQL_PASSWORD: ${USERNAME_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${USERNAME_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+    networks:
+      - back
+
+networks:
+  back:
+    external: true
+    name: back
+
+
+volumes:
+  vol_1:
+    name: ${PR_ART}--${SERVICE}
