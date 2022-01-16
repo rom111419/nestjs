@@ -8,6 +8,8 @@ const port: string = process.env.PORT;
 const username: string = process.env.USERNAME;
 const password: string = process.env.PASSWORD;
 const database: string = process.env.DATABASE;
+console.log(username);
+console.log(database);
 
 const devOptions: TypeOrmModuleOptions = {
   type: 'mariadb',
