@@ -12,3 +12,4 @@ ritmby--mariadb:latest
 #NestJs
     Generate REST API controller:
     nest g resource ${name}
+

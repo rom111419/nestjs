@@ -7,7 +7,7 @@ import { DbModule } from './modules/db/db.module';
 /*import { TextsModule } from './modules/texts/texts.module';*/
 
 @Module({
-  imports: [DeviBagModule, DbModule /*, TextsModule*/],
+  imports: [DeviBagModule /* , DbModule , TextsModule */],
   controllers: [AppController],
   providers: [AppService],
 })
