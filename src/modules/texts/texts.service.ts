@@ -3,13 +3,12 @@ import { CreateTextDto } from './dto/create-text.dto';
 import { UpdateTextDto } from './dto/update-text.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Text } from './entities/text.entity';
-import { Connection, Repository } from 'typeorm';
+import { FindOneOptions, Repository } from 'typeorm';
 
 @Injectable()
 export class TextsService {
   constructor(
-    @InjectRepository(Text)
-    private readonly textsRepository: Repository<Text>,
+    @InjectRepository(Text) private readonly textsRepository: Repository<Text>,
   ) {}
 
   create(createTextDto: CreateTextDto) {
@@ -22,8 +21,8 @@ export class TextsService {
     return this.textsRepository.find();
   }
 
-  findOne(id: number): Promise<Text> {
-    return this.textsRepository.findOne(id);
+  findOne(id: string | FindOneOptions<Text>): Promise<Text> {
+    return this.textsRepository.findOneBy({ id: +id });
   }
 
   update(id: number, updateTextDto: UpdateTextDto) {

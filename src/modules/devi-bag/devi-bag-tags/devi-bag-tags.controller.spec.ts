@@ -6,7 +6,7 @@ describe('DeviBagTagsController', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [DeviBagTagsController],
+      controllers: [DeviBagTagsController]
     }).compile();
 
     controller = module.get<DeviBagTagsController>(DeviBagTagsController);

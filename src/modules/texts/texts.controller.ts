@@ -28,7 +28,7 @@ export class TextsController {
 
   @Get(':id')
   findOne(@Param('id') id: string): Promise<Text> {
-    return this.textsService.findOne(+id);
+    return this.textsService.findOne(id);
   }
 
   @Patch(':id')

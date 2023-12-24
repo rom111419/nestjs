@@ -14,9 +14,10 @@ import { diskStorage } from 'multer';
         destination: './settings/devi-bag/',
         filename: (req, file, callback) => {
           callback(null, `${file.originalname}`);
-        },
-      }),
-    }),
-  ],
+        }
+      })
+    })
+  ]
 })
-export class DeviBagModule {}
+export class DeviBagModule {
+}

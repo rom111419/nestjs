@@ -8,6 +8,7 @@ import { TextsService } from './texts.service';
   imports: [TypeOrmModule.forFeature([Text])],
   controllers: [TextsController],
   providers: [TextsService],
-  exports: [TypeOrmModule],
+  exports: [TypeOrmModule]
 })
-export class TextsModule {}
+export class TextsModule {
+}

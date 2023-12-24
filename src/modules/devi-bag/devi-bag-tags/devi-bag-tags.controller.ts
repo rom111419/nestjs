@@ -1,10 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  UploadedFile,
-  UseInterceptors,
-} from '@nestjs/common';
+import { Controller, Get, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { JSON_FILE_FILTER } from '../utils/image-file.filter';
 import { readFileSync } from 'fs';
@@ -14,7 +8,7 @@ export class DeviBagTagsController {
   @Get()
   getDeviBagTags(): any[] {
     const file = readFileSync('settings/devi-bag/devi-bag-tags.json', {
-      encoding: 'utf8',
+      encoding: 'utf8'
     });
     return JSON.parse(file);
   }
@@ -22,8 +16,8 @@ export class DeviBagTagsController {
   @Post('upload')
   @UseInterceptors(
     FileInterceptor('file', {
-      fileFilter: JSON_FILE_FILTER,
-    }),
+      fileFilter: JSON_FILE_FILTER
+    })
   )
   uploadFile(@UploadedFile() file) {
     console.log([file]);

@@ -6,7 +6,7 @@ export class DeviBagImagesController {
   @Get()
   getHello(): any[] {
     const file = readFileSync('settings/devi-bag/devi-bag-images.json', {
-      encoding: 'utf8',
+      encoding: 'utf8'
     });
     return JSON.parse(file);
   }
@@ -14,17 +14,17 @@ export class DeviBagImagesController {
   @Get('/titleImages/:id')
   findAllByTagId(@Param('id') tagId: string): any[] {
     const file = readFileSync('settings/devi-bag/devi-bag-images.json', {
-      encoding: 'utf8',
+      encoding: 'utf8'
     });
     return JSON.parse(file).filter(
-      (it) => it.tagsId.includes(tagId) && it.isTitle,
+      (it) => it.tagsId.includes(tagId) && it.isTitle
     );
   }
 
   @Get('/detail/:id')
   findByImageId(@Param('id') productId: string): any[] {
     const file = readFileSync('settings/devi-bag/devi-bag-images.json', {
-      encoding: 'utf8',
+      encoding: 'utf8'
     });
     return JSON.parse(file).filter((it) => it.productIds.includes(productId));
   }
