@@ -1,0 +1,60 @@
+version: '3.9'
+
+services:
+  database:
+    image: ${PR_ART}--${SERVICE}:latest
+    container_name: ${COMPOSE_PROJECT_NAME}--${SERVICE}
+    build:
+      context: ./
+      dockerfile: dockerfile--${SERVICE}.dockerfile
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - 5041:3306
+    volumes:
+      - type: volume
+        source: vol_1
+        target: /var/lib/mariadb
+    environment:
+      MARIADB_USER: ${USERNAME}
+      MARIADB_PASSWORD: ${USERNAME_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${USERNAME_PASSWORD}
+      MARIADB_DATABASE: ${DB_NAME}
+    networks:
+      - back
+
+  database-2:
+    image: ${PR_ART}--${SERVICE2}:latest
+    container_name: ${COMPOSE_PROJECT_NAME}--${SERVICE2}
+    build:
+      context: ./
+      dockerfile: dockerfile--${SERVICE}.dockerfile
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - 5042:3306
+    volumes:
+      - type: volume
+        source: vol_2
+        target: /var/lib/mariadb
+    environment:
+      MARIADB_USER: ${USERNAME}
+      MARIADB_PASSWORD: ${USERNAME_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${USERNAME_PASSWORD}
+      MARIADB_DATABASE: ${DB_NAME2}
+    networks:
+      - back
+
+networks:
+  back:
+    external: true
+    name: back
+
+
+volumes:
+  vol_1:
+    name: ${PR_ART}--${SERVICE}
+  vol_2:
+    name: ${PR_ART}--${SERVICE2}

@@ -1,0 +1,21 @@
+export interface DataBaseConfigI {
+  DATA_BASE_TYPE: string;
+  DATA_BASE_HOST: string;
+  DATA_BASE_PORT: string;
+  DATA_BASE_USERNAME: string;
+  DATA_BASE_PASSWORD: string;
+  DATA_BASE_DATABASE: string;
+  DATA_BASE_SYNCHRONIZE: string;
+  DATA_BASE_AUTOLOAD_ENTITIES: string;
+}
+
+export const dataBaseENV: () => DataBaseConfigI = () => ({
+  DATA_BASE_TYPE: process.env.DATA_BASE_TYPE,
+  DATA_BASE_HOST: process.env.DATA_BASE_HOST,
+  DATA_BASE_PORT: process.env.DATA_BASE_PORT,
+  DATA_BASE_USERNAME: process.env.DATA_BASE_USERNAME,
+  DATA_BASE_PASSWORD: process.env.DATA_BASE_PASSWORD,
+  DATA_BASE_DATABASE: process.env.DATA_BASE_DATABASE,
+  DATA_BASE_SYNCHRONIZE: process.env.DATA_BASE_SYNCHRONIZE,
+  DATA_BASE_AUTOLOAD_ENTITIES: process.env.DATA_BASE_AUTOLOAD_ENTITIES,
+});
