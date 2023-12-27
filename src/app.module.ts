@@ -9,12 +9,16 @@ import { DbModule } from './modules/db/db.module';
 import { DbModule } from './modules/db/db.module';
 
 import { TextsModule } from './modules/texts/texts.module';*/
+import { LangchainChatModule } from './modules/langchain-chat/langchain-chat.module';
+import { TextsModule } from './modules/texts/texts.module';
 
 @Module({
   imports: [
     EnvironmentModule(),
     DbModule,
-    /* DeviBagModule , DbModule , TextsModule */
+    LangchainChatModule,
+    TextsModule,
+    /* DeviBagModule , TextsModule */
   ],
   controllers: [AppController],
   providers: [AppService],
