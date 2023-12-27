@@ -18,19 +18,20 @@ import {
   RunnablePassthrough,
 } from 'langchain/runnables';
 import { Document } from 'langchain/document';
+import { APP_ENV } from '../app/app.config';
 
 @Injectable()
 export class LangchainChatService {
   private readonly llm = new OpenAI({
     temperature: 0.9,
-    openAIApiKey: '',
+    openAIApiKey: APP_ENV().OPEN_AI_API_KEY,
   });
   private readonly openAIEmbeddings = new OpenAIEmbeddings({
-    openAIApiKey: '',
+    openAIApiKey: APP_ENV().OPEN_AI_API_KEY,
   });
   private readonly chatOpenAI = new ChatOpenAI({
     temperature: 0.9,
-    openAIApiKey: '',
+    openAIApiKey: APP_ENV().OPEN_AI_API_KEY,
   });
   messages = (text: string) => [new HumanMessage({ content: text })];
 

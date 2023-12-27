@@ -10,6 +10,7 @@ export interface AppConfig extends DataBaseConfigI {
   APP_ROOT_PASSWORD: string;
   APP_HOST: string;
   APP_PORT: string;
+  OPEN_AI_API_KEY: string;
   swagger: SwaggerConfigI;
 }
 
@@ -19,6 +20,7 @@ export const APP_ENV = () =>
     APP_ROOT_PASSWORD: process.env.APP_ROOT_PASSWORD,
     APP_HOST: process.env.APP_HOST,
     APP_PORT: process.env.APP_PORT,
+    OPEN_AI_API_KEY: process.env.OPEN_AI_API_KEY,
     ...dataBaseENV(),
     swagger: dataSwaggerConfig(),
   }) as AppConfig;
