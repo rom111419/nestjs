@@ -30,7 +30,7 @@ export class LangchainChatService {
   });
   private readonly chatOpenAI = new ChatOpenAI({
     temperature: 0.9,
-    openAIApiKey: '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',
+    openAIApiKey: '',
   });
   messages = (text: string) => [new HumanMessage({ content: text })];
 
