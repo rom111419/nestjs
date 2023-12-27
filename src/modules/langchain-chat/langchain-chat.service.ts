@@ -23,10 +23,10 @@ import { Document } from 'langchain/document';
 export class LangchainChatService {
   private readonly llm = new OpenAI({
     temperature: 0.9,
-    openAIApiKey: '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',
+    openAIApiKey: '',
   });
   private readonly openAIEmbeddings = new OpenAIEmbeddings({
-    openAIApiKey: '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',
+    openAIApiKey: '',
   });
   private readonly chatOpenAI = new ChatOpenAI({
     temperature: 0.9,
