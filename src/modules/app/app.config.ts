@@ -11,6 +11,9 @@ export interface AppConfig extends DataBaseConfigI {
   APP_HOST: string;
   APP_PORT: string;
   OPEN_AI_API_KEY: string;
+  GOOGLE_CLIENT_ID: string;
+  GOOGLE_CLIENT_SECRET: string;
+  GOOGLE_CALLBACK_URL: string;
   swagger: SwaggerConfigI;
 }
 
@@ -21,6 +24,9 @@ export const APP_ENV = () =>
     APP_HOST: process.env.APP_HOST,
     APP_PORT: process.env.APP_PORT,
     OPEN_AI_API_KEY: process.env.OPEN_AI_API_KEY,
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+    GOOGLE_CALLBACK_URL: process.env.GOOGLE_CALLBACK_URL,
     ...dataBaseENV(),
     swagger: dataSwaggerConfig(),
   }) as AppConfig;

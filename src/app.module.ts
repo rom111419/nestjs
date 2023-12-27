@@ -11,10 +11,12 @@ import { DbModule } from './modules/db/db.module';
 import { TextsModule } from './modules/texts/texts.module';*/
 import { LangchainChatModule } from './modules/langchain-chat/langchain-chat.module';
 import { TextsModule } from './modules/texts/texts.module';
+import { GoogleOauthModule } from './modules/google-auth/google-oauth.module';
 
 @Module({
   imports: [
     EnvironmentModule(),
+    GoogleOauthModule,
     DbModule,
     LangchainChatModule,
     TextsModule,
