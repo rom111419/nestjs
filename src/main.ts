@@ -3,13 +3,14 @@ import type { NestExpressApplication } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
 import { NODE_ENV } from './modules/app/app.config';
 import { RunSwagger } from './modules/swagger/swagger.config';
-import { join } from 'path';
 
 async function bootstrap() {
   const app: NestExpressApplication = await NestFactory.create(AppModule, {
     cors: true,
     rawBody: true,
   });
+  app.set('view engine', 'html');
+
   RunSwagger(app);
   console.log('environment: ' + NODE_ENV);
 

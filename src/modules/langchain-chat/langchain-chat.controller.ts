@@ -1,13 +1,14 @@
-import { Controller, Get, Render, Res } from '@nestjs/common';
+import { Controller, Get, UseGuards } from '@nestjs/common';
 import { LangchainChatService } from './langchain-chat.service';
-import { Response } from 'express';
 import { BaseMessage } from 'langchain/schema';
+import { GoogleOAuthGuard } from '../google-auth/google-oauth.guard';
 
 @Controller('langchain-chat')
 export class LangchainChatController {
   constructor(private readonly langchainChatService: LangchainChatService) {}
 
   @Get('llm/predict')
+  @UseGuards(GoogleOAuthGuard)
   async getLLMPrediction(): Promise<string> {
     const text = 'Сколько планет в солнечной системе?';
     return this.langchainChatService.getLLMPrediction(text);

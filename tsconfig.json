@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-     "module": "commonjs",
+    "module": "commonjs",
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
@@ -18,7 +18,12 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@mvc": ["./src/mvc"]
+      "@nestjs/platform-express": [
+        "node_modules/@nestjs/platform-express"
+      ],
+      "@mvc": [
+        "./src/mvc"
+      ]
     }
   }
 }
